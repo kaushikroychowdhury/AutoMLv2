@@ -56,32 +56,32 @@ def build_model_TSNE(df):
 
     st.plotly_chart(fig)
 
-def build_model_UMAP(df):
-    import umap.umap_ as umap
+# def build_model_UMAP(df):
+#     import umap.umap_ as umap
 
-    fig=px.scatter_matrix(df, dimensions=ind_var, color=target_var)
-    st.subheader("Pairplot (each feature against other features)")
-    st.plotly_chart(fig)
+#     fig=px.scatter_matrix(df, dimensions=ind_var, color=target_var)
+#     st.subheader("Pairplot (each feature against other features)")
+#     st.plotly_chart(fig)
 
-    features=df[ind_var]
-    umap_proj = umap.UMAP(n_components=n_components, random_state=random_state)
-    projections = umap_proj.fit_transform(features)
+#     features=df[ind_var]
+#     umap_proj = umap.UMAP(n_components=n_components, random_state=random_state)
+#     projections = umap_proj.fit_transform(features)
 
-    if n_components == 2:
-        st.subheader("UMAP 2D Projection")
-        fig=px.scatter(
-            projections, x=0, y=1,
-            color=df[target_var], labels={'color': target_var}
-        )
-    else:
-        st.subheader("UMAP 3D Projection")
-        fig=px.scatter_3d(
-            projections, x=0, y=1, z=2,
-            color=df[target_var], labels={'color': target_var}
-        )
-        fig.update_traces(marker_size=4)
+#     if n_components == 2:
+#         st.subheader("UMAP 2D Projection")
+#         fig=px.scatter(
+#             projections, x=0, y=1,
+#             color=df[target_var], labels={'color': target_var}
+#         )
+#     else:
+#         st.subheader("UMAP 3D Projection")
+#         fig=px.scatter_3d(
+#             projections, x=0, y=1, z=2,
+#             color=df[target_var], labels={'color': target_var}
+#         )
+#         fig.update_traces(marker_size=4)
 
-    st.plotly_chart(fig)
+#     st.plotly_chart(fig)
 
 
 # Page Layout ( Streamlit web Interface )
